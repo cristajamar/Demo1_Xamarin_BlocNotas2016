@@ -84,7 +84,8 @@ namespace Demo1_Xamarin_BlocNotas2016.ViewModel.Base
         /*recibe el View model que esta trabajando*/
         public void SetState<T>(Action<T> action) where T : class, IViewModel
         {
-            action(this as T);
+            if (action != null)
+                action(this as T);
         }
     }
 }
