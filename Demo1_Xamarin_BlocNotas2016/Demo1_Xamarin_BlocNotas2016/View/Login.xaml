@@ -31,8 +31,9 @@ Hay que tener en cuenta que dentro de las paginas raiz no pueden incluirse otras
     <Label Text="{Binding TituloPassword}"></Label>
     <Entry Text="{Binding Usuario.Password}"></Entry>
     <StackLayout Orientation="Horizontal">
-      <Button Text="{Binding TituloIniciar}"></Button>
-      <Button Text="{Binding TituloRegistro}"></Button>
+      <Button Text="{Binding TituloIniciar}" Command="{Binding cmdLogin}"></Button>
+      <!--Binding se utiliza siempre que queremos recuperar datos del viewModel, es algo que implementa MVVM-->
+      <Button Text="{Binding TituloRegistro}" Command="{Binding cmdAlta}"></Button>
     </StackLayout>
   </StackLayout>
  
