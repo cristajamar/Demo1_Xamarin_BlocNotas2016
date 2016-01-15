@@ -10,13 +10,13 @@ namespace Demo1_Xamarin_BlocNotas2016.Factorias
         /*Los creamos en readonly, porque una vez que esten inicializados no queremos que se modifiquen*/
         private readonly Lazy<INavigation> _navigation; //se encarga del Lazyloading, cuando le pasemos la referencia a ese navegador si no existe lo creará.
         private readonly IViewFactory _viewFactory; //se encargara de la relación entre vistas
-        private readonly IPage _page;
+        //private readonly IPage _page;
 
         public Navigator(Lazy<INavigation> navigation, IViewFactory viewFactory, IPage page)
         {
             _navigation = navigation;
             _viewFactory = viewFactory;
-            _page = page;
+            //_page = page;
         }
 
         public INavigation Navigation {get {return _navigation.Value; }}
