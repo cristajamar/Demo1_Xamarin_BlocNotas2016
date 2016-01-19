@@ -3,21 +3,23 @@ using Demo1_Xamarin_BlocNotas2016.Factorias;
 using Demo1_Xamarin_BlocNotas2016.Model;
 using Demo1_Xamarin_BlocNotas2016.Service;
 using Demo1_Xamarin_BlocNotas2016.ViewModel.Base;
+using Xamarin.Forms;
 
 namespace Demo1_Xamarin_BlocNotas2016.ViewModel
 {
     public class RegistroViewModel:GeneralViewModel
     {
         public ICommand cmdAlta { get; set; }
-        private Usuario _usuario;
+        
         public Usuario Usuario
         {
             get { return _usuario; }
             set { SetProperty(ref _usuario, value); }
         }
-
+        private Usuario _usuario = new Usuario();
         public RegistroViewModel(INavigator navigator, IServicioDatos servicio) : base(navigator, servicio)
         {
+            cmdAlta = new Command(GuardarUsuario);
         }
 
         private async void GuardarUsuario()

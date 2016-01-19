@@ -13,6 +13,6 @@ namespace Demo1_Xamarin_BlocNotas2016.Model
         public String Password { get; set; }
         public String Nombre { get; set; }
         public String Apellidos { get; set; }
-        public String Foto{ get; set; }
+        //public String Foto{ get; set; }
     }
 }

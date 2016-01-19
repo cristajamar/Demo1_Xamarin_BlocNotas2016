@@ -11,8 +11,8 @@ namespace Demo1_Xamarin_BlocNotas2016.ViewModel
     {
         /*Manejamos la referencia al navegador y al servicio de datos*/
 
-        private ICommand cmdLogin;
-        private ICommand cmdAlta;
+        public ICommand cmdLogin { get; set; }
+        public ICommand cmdAlta { get; set; }
 
         public LoginViewModel(INavigator navigator, IServicioDatos servicio) : base(navigator, servicio)
         {
@@ -66,7 +66,7 @@ namespace Demo1_Xamarin_BlocNotas2016.ViewModel
 
         private async void NuevoUsuario()
         {
-            //await _navigator.PopToRootAsync();
+            await _navigator.PopToRootAsync();
             await _navigator.PushModalAsync<RegistroViewModel>(viewModel =>
             {
                 Titulo = "Nuevo usuario"; //le fija propiedades a la vista antes de que cargue, esto lo hace atraves del action

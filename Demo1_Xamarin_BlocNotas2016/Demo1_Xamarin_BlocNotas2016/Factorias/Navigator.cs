@@ -12,7 +12,7 @@ namespace Demo1_Xamarin_BlocNotas2016.Factorias
         private readonly IViewFactory _viewFactory; //se encargara de la relación entre vistas
         //private readonly IPage _page;
 
-        public Navigator(Lazy<INavigation> navigation, IViewFactory viewFactory, IPage page)
+        public Navigator(Lazy<INavigation> navigation, IViewFactory viewFactory)
         {
             _navigation = navigation;
             _viewFactory = viewFactory;
