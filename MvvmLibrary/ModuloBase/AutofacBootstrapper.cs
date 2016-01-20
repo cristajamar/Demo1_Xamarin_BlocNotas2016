@@ -1,7 +1,7 @@
 ﻿using Autofac;
-using Demo1_Xamarin_BlocNotas2016.Factorias;
+using MvvmLibrary.Factorias;
 
-namespace Demo1_Xamarin_BlocNotas2016.Modulo
+namespace MvvmLibrary.ModuloBase
 {
     public abstract class AutofacBootstrapper
     {

@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Demo1_Xamarin_BlocNotas2016.ViewModel.Base
+namespace MvvmLibrary.ViewModel.Base
 {
     public class ViewModelBase:IViewModel
     {
@@ -61,7 +57,7 @@ namespace Demo1_Xamarin_BlocNotas2016.ViewModel.Base
         /*Fuerza el cambio de las propiedades*/
         protected virtual bool SetProperty<T>(ref T variable, T valor, [CallerMemberName] string nombre = null)
         {
-            /*Si el valor es igual, no hace nada*/
+            /*Si el valo es igual, no hace nada*/
             if (object.Equals(variable, valor))
                 return false;
             /*Si no es igual, actualiza el valor de la varible*/
