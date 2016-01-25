@@ -64,5 +64,43 @@ namespace Demo1_Xamarin_BlocNotas2016.Service
             }
                 return data[0];
         }
+
+        //Operaciones de Bloc
+        #region Bloc
+
+        public async Task AddBloc(Bloc Bloc)
+        {
+            //Con gettable recuperas el formato de la tabla que le indicas.
+            var tabla = cliente.GetTable<Bloc>();
+            //Insertas en la tabla formateada el objeto recibido
+            await tabla.InsertAsync(Bloc);
+        }
+
+        public async Task<List<Bloc>> GetBloc(string usuario)
+        {
+            var tabla = cliente.GetTable<Bloc>();
+            //Se recuperan los Blocs del usuario recibido, con la expresión lambda y se guardan
+            //en una lista
+            var data = await tabla.CreateQuery().Where(o => o.IdUsuario == usuario).ToListAsync();
+            return data;
+        }
+        //Como usamos azure mobile services hay que ceñirnos a su arquitectura, por eso el delete y update
+        //lo haces pasando el Bloc entero
+        public async Task DeleteBloc(Bloc Bloc)
+        {
+            //Para borrar, mejor pasar el Bloc entero, no solo el ID
+            var tabla = cliente.GetTable<Bloc>();
+            await tabla.DeleteAsync(Bloc);
+        }
+
+        public async Task UpdateBloc(Bloc Bloc)
+        {
+            var tabla = cliente.GetTable<Bloc>();
+            await tabla.UpdateAsync(Bloc);
+        }
+
+        #endregion
+
+
     }
 }

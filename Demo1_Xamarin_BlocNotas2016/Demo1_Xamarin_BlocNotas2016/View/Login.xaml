@@ -17,10 +17,11 @@ Hay que tener en cuenta que dentro de las paginas raiz no pueden incluirse otras
 
 
 
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="Demo1_Xamarin_BlocNotas2016.View.Login">
-  
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Demo1_Xamarin_BlocNotas2016.View.Login" 
+             Title="{Binding Titulo}" >
+
   <StackLayout Orientation="Vertical">
     <!--El databindig sirve para que extraiga del ViewModel la propiedad que le indiquemos
     Toda la informacuión que se genera en esta pantalla proviene de esto elementos. 
@@ -36,6 +37,6 @@ Hay que tener en cuenta que dentro de las paginas raiz no pueden incluirse otras
       <Button Text="{Binding TituloRegistro}" Command="{Binding cmdAlta}"></Button>
     </StackLayout>
   </StackLayout>
- 
+
 </ContentPage>
 

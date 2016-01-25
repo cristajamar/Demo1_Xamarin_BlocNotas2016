@@ -48,7 +48,7 @@ namespace Demo1_Xamarin_BlocNotas2016.Factorias
             var tipoVista = _map[typeof(TViewModel)];
             //recupera el objeto de la vista, que tiene los datos
             var vista = _componentContext.Resolve(tipoVista) as Page;
-            if (action == null)
+            if (action != null)
                 viewModel.SetState(action);
 
             //el BindingContext relaciona la vista con el viewModel que es el que contiene los datos para la vista.

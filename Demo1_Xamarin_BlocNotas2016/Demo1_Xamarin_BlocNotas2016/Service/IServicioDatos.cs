@@ -18,5 +18,15 @@ namespace Demo1_Xamarin_BlocNotas2016.Service
         Task<Usuario> UpdateUsuario(Usuario us);
         Task DeleteUsuario(String us);
 
+        #region Bloc
+
+        Task AddBloc(Bloc bloc);
+        Task<List<Bloc>> GetBloc(String usuario); //Recuperas todos los blocks de un usuario
+        Task DeleteBloc(Bloc bloc);
+        Task UpdateBloc(Bloc bloc);
+
+        #endregion
+
+
     }
 }

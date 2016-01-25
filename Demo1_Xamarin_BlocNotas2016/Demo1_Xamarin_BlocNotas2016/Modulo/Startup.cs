@@ -28,6 +28,7 @@ namespace Demo1_Xamarin_BlocNotas2016.Modulo
             viewFactory.Register<LoginViewModel,Login>();
             viewFactory.Register<RegistroViewModel,Registro>();
             viewFactory.Register<PrincipalViewModel,Principal>();
+            viewFactory.Register<NuevoBlocViewModel,NuevoBloc>();
         }
 
         protected override void ConfigureApplication(IContainer container)

@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Demo1_Xamarin_BlocNotas2016.Factorias;
 using Demo1_Xamarin_BlocNotas2016.Model;
 using Demo1_Xamarin_BlocNotas2016.Service;
+using Demo1_Xamarin_BlocNotas2016.Util;
 using Xamarin.Forms;
 
 namespace Demo1_Xamarin_BlocNotas2016.ViewModel
@@ -14,13 +16,14 @@ namespace Demo1_Xamarin_BlocNotas2016.ViewModel
         public ICommand cmdLogin { get; set; }
         public ICommand cmdAlta { get; set; }
 
-        public LoginViewModel(INavigator navigator, IServicioDatos servicio) : base(navigator, servicio)
+        public LoginViewModel(INavigator navigator, IServicioDatos servicio, Session session) : base(navigator, servicio, session)
         {
             cmdLogin = new Command(IniciarSesion);
             cmdAlta = new Command(NuevoUsuario);
+            Titulo = "Login";
         }
 
-        public string TituloIniciar { get { return "Iniciar sesión:"; } }
+        public string TituloIniciar { get { return "Iniciar sesión"; } }
         public string TituloRegistro { get { return "Nuevo usuario"; } }
         public string TituloLogin { get { return "Nombre de usuario"; } }
         public string TituloPassword { get { return "Contraseña"; } }
@@ -43,10 +46,15 @@ namespace Demo1_Xamarin_BlocNotas2016.ViewModel
 
                 if (us != null)
                 {
+                    Session["usuario"] = us; //En el campo usuario de la sesión guarda el valor de us
+                    var blocs = await _servicio.GetBloc(us.Id);
+                    
+
                     await _navigator.PopToRootAsync();
                     await _navigator.PushAsync<PrincipalViewModel>(viewModel =>
                     {
-                        Titulo = "Pantalla principal"; //le fija propiedades a la vista antes de que cargue, esto lo hace atraves del action
+                        viewModel.Titulo = "Principal"; //le fija propiedades a la vista antes de que cargue, esto lo hace atraves del action
+                        viewModel.Blocs = new ObservableCollection<Bloc>(blocs); //Tenemos que inicializarlo con el conjunto de datos
                     });
                 }
                 else
@@ -69,7 +77,7 @@ namespace Demo1_Xamarin_BlocNotas2016.ViewModel
             await _navigator.PopToRootAsync();
             await _navigator.PushModalAsync<RegistroViewModel>(viewModel =>
             {
-                Titulo = "Nuevo usuario"; //le fija propiedades a la vista antes de que cargue, esto lo hace atraves del action
+                viewModel.Titulo = "Nuevo usuario"; //le fija propiedades a la vista antes de que cargue, esto lo hace atraves del action
             });
         }
     }
