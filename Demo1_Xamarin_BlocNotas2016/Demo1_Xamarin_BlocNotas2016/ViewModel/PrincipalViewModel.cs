@@ -4,6 +4,7 @@ using Demo1_Xamarin_BlocNotas2016.Factorias;
 using Demo1_Xamarin_BlocNotas2016.Model;
 using Demo1_Xamarin_BlocNotas2016.Service;
 using Demo1_Xamarin_BlocNotas2016.Util;
+using Xamarin.Forms;
 
 namespace Demo1_Xamarin_BlocNotas2016.ViewModel
 {
@@ -23,6 +24,8 @@ namespace Demo1_Xamarin_BlocNotas2016.ViewModel
         } 
         public PrincipalViewModel(INavigator navigator, IServicioDatos servicio, Session session) : base(navigator, servicio, session)
         {
+            var a = "";
+            CmdNuevo = new Command(NuevoBloc);
         }
 
         private async void NuevoBloc()

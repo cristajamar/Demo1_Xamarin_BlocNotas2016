@@ -11,10 +11,11 @@ namespace Demo1_Xamarin_BlocNotas2016.ViewModel
 {
     public class NuevoBlocViewModel:GeneralViewModel
     {
-        public ICommand CmdGuardar { get; set; }
+        
         public ObservableCollection<Bloc> Blocs { get; set; }
+        public ICommand CmdGuardar { get; set; }
 
-        private Bloc _bloc;
+        
 
         public Bloc Bloc
         {
@@ -22,7 +23,8 @@ namespace Demo1_Xamarin_BlocNotas2016.ViewModel
             set { SetProperty(ref _bloc, value); }
         }
 
-        
+        private Bloc _bloc;
+
         public NuevoBlocViewModel(INavigator navigator, IServicioDatos servicio, Session session) : base(navigator, servicio, session)
         {
             
